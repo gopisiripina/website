@@ -79,13 +79,45 @@ const frontlineTeam = [
   { name: "Vemagiri Reshma", role: "Hardware  Engineer", bio: "Validates performance and durability of our electronic products through comprehensive stress and functionality tests.", img: "/assets/aboutus/reshma1.jpeg",pos: "center 15%" },
   { name: "Jannela Chandana", role: "Procurement Engineer ", bio: "Plays a crucial role in sourcing and managing the services that support our technological innovations. Ensures the timely acquisition of high-quality materials while maintaining strong and reliable relationships with suppliers.", img: "/assets/aboutus/chandana1.jpeg" },
   { name: "Kalla Viharika", role: "Electronics Engineer", bio: "Core of our product development. Designs and implements circuitry and systems that power our innovative devices.", img: "/assets/aboutus/kalla.jpeg" },
-    { name: "Kandi Anusha", role: "Embedded Developer", bio: "Specializes in developing embedded systems, focusing on reliable hardware integration and efficient technology solutions.", img: "/assets/aboutus/anusha.png" },
+    { name: "Kandi Anusha", role: "Embedded Developer", bio: "Specializes in developing embedded systems, focusing on reliable hardware integration and efficient technology solutions.", img: "/assets/aboutus/anusha.webp" },
     { name: "Gandepalli Uma Maheswari", role: "EMS Technician", bio: "Handles electronic manufacturing and system assembly, ensuring precise component integration and reliable electronic solutions.", img: "/assets/aboutus/uma1.jpeg" },
       { name: "Shaik Nasser Ali", role: "Cloud Engineer", bio: "Builds and manages scalable cloud infrastructure, ensuring secure, reliable, and high-performance systems for modern applications.", img: "/assets/aboutus/sai.png", },
   { name: "Siripina Gopi", role: "Front-End Developer", bio: "Creates modern, responsive web interfaces focused on performance, usability, and seamless user experience across different platforms.", img: "/assets/aboutus/gopi.png",pos: "center 15%" },
 
 
 ];
+const CountUp = ({ end, duration = 2000 }) => {
+  const [count, setCount] = React.useState(0);
+  const [started, setStarted] = React.useState(false);
+  const elementRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setStarted(true);
+      },
+      { threshold: 0.5 }
+    );
+    if (elementRef.current) observer.observe(elementRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    if (!started) return;
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      setCount(Math.floor(progress * end));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [started, end, duration]);
+
+  return <span ref={elementRef}>{count}</span>;
+};
 
 export default function About() {
   const [selectedAdviser, setSelectedAdviser] = React.useState(null);
@@ -96,7 +128,7 @@ export default function About() {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'DM Sans', sans-serif; background: #fff; overflow-x: hidden; }
 
-        .about-main { padding-top: 100px;  padding-bottom: 120px;width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .about-main { padding-top: 100px;  padding-bottom: 40px;width: 100%; display: flex; flex-direction: column; align-items: center; }
 
         /* General Section Helper */
         .sec-wrap { width: 90vw; max-width: 1300px; margin-bottom: 80px; }
@@ -130,10 +162,21 @@ export default function About() {
         .outline-pill { border: 1.5px solid #0056b3; color: #0056b3; padding: 12px 35px; border-radius: 25px; font-weight: 600; cursor: pointer; background: transparent; font-size: 13px; }
 
         /* SECTION 4: Blue Stats Bar */
-        .stats-bar { width: 100vw; background: #0056b3; color: white; padding: 60px 5%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 100px; }
+        .stats-bar { width: 100vw; background: #0056b3; color: white; padding: 10px 4%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 100px; }
         .stat-item { text-align: center; }
-        .stat-item h3 { font-size: 36px; font-weight: 700; margin-bottom: 5px; }
-        .stat-item p { font-size: 14px; opacity: 0.9; }
+       .stat-item h3 { 
+  font-size: clamp(48px, 8vw, 80px); /* Very large impact font */
+  font-weight: 500; 
+  margin-bottom: -7px; 
+  font-family: serif; /* Matches the clean look in your image */
+}
+
+.stat-item p { 
+  font-size: 16px; 
+  font-weight: 500; 
+  color: #ffffff; 
+  text-transform: capitalize;
+}
 
         /* SECTION 5: Strength Section */
         .strength-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 60px; }
@@ -405,7 +448,7 @@ export default function About() {
           </div>
           <div className="intro-flex">
             <div className="intro-video">
-               <iframe width="100%" height="100%" src="https://www.youtube.com/embed/your_id" frameBorder="0" allowFullScreen title="About video"></iframe>
+               <iframe width="100%" height="100%" src="https://www.youtube.com/embed/IT1uBUsOmUY?si=FJR6uzbjM-cmhvFQ" frameBorder="0" allowFullScreen title="About video"></iframe>
             </div>
             <div className="intro-text">
                 
@@ -431,7 +474,10 @@ export default function About() {
 <section className="mv-section">
   <div className="mv-image-box">
     {/* Replace with your mission image */}
-    <img src="/assets/aboutus/mission-bg.jpg" alt="Our Mission" />
+   <img 
+      src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=1000" 
+      alt="Our Mission" 
+    />
   </div>
   <div className="mv-content">
     <h2>Our Mission</h2>
@@ -443,7 +489,10 @@ export default function About() {
 <section className="mv-section reverse">
   <div className="mv-image-box">
     {/* Replace with your vision image */}
-    <img src="/assets/aboutus/vision-bg.jpg" alt="Our Vision" />
+    <img 
+      src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000" 
+      alt="Our Vision" 
+    />
   </div>
   <div className="mv-content">
     <h2>Our Vision</h2>
@@ -462,11 +511,23 @@ export default function About() {
         </section>
 
         {/* Stats */}
-        <section className="stats-bar">
-          <div className="stat-item"><h3>130,000+</h3><p>printers sold</p></div>
-          <div className="stat-item"><h3>8</h3><p>global locations</p></div>
-          <div className="stat-item"><h3>300,000,000+</h3><p>parts printed</p></div>
-        </section>
+        {/* Stats Section with Count-Up Animation */}
+<section className="stats-bar">
+  <div className="stat-item">
+    <h3><CountUp end={20} />+</h3>
+    <p>Projects Completed</p>
+  </div>
+  
+  <div className="stat-item">
+    <h3><CountUp end={10} />+</h3>
+    <p>Clients</p>
+  </div>
+  
+  <div className="stat-item">
+    <h3><CountUp end={5} />+</h3>
+    <p>Years Experience</p>
+  </div>
+</section>
 
         {/* Strength Section */}
         <section className="sec-wrap">
