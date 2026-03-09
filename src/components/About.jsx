@@ -81,7 +81,11 @@ const frontlineTeam = [
   { name: "Kalla Viharika", role: "Electronics Engineer", bio: "Core of our product development. Designs and implements circuitry and systems that power our innovative devices.", img: "/assets/aboutus/kalla.jpeg" },
     { name: "Kandi Anusha", role: "Embedded Developer", bio: "Specializes in developing embedded systems, focusing on reliable hardware integration and efficient technology solutions.", img: "/assets/aboutus/anusha.webp" },
     { name: "Gandepalli Uma Maheswari", role: "EMS Technician", bio: "Handles electronic manufacturing and system assembly, ensuring precise component integration and reliable electronic solutions.", img: "/assets/aboutus/uma1.jpeg" },
-      { name: "Shaik Nasser Ali", role: "Cloud Engineer", bio: "Builds and manages scalable cloud infrastructure, ensuring secure, reliable, and high-performance systems for modern applications.", img: "/assets/aboutus/sai.png", },
+      { name: "Shaik Naseer Ali", role: "Cloud Engineer", bio: "Builds and manages scalable cloud infrastructure, ensuring secure, reliable, and high-performance systems for modern applications.", img: "/assets/aboutus/ali.jpeg", pos: "center 15%", 
+  // Use negative to move LEFT, positive to move RIGHT
+  moveX: "-10px", 
+  scale: 1.1},
+
   { name: "Siripina Gopi", role: "Front-End Developer", bio: "Creates modern, responsive web interfaces focused on performance, usability, and seamless user experience across different platforms.", img: "/assets/aboutus/gopi.png",pos: "center 15%" },
 
 
@@ -600,7 +604,8 @@ export default function About() {
       <div key={i} className="frontline-card">
         <div className="frontline-img-wrap">
           <img src={m.img} alt={m.name}
-          style={{ objectPosition: m.pos || 'center 15%' }}/>
+          style={{ objectPosition: m.pos || 'center 15%',  transform: `scale(${m.scale || 1}) translateX(${m.moveX || '0px'})`
+    }}/>
         </div>
         <div className="frontline-info">
           <h3>{m.name}</h3>
