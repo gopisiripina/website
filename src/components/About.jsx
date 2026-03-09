@@ -26,13 +26,18 @@ const leaders = [
     name: "Surya Tamarapalli", 
     role: "Founder", 
     company: "MYACCESS",
-    img: "/assets/aboutus/surya img.jpeg" 
+    img: "/assets/aboutus/surya img.jpeg" ,
+    pos: "center 85%",
+     bio: "Surya is the visionary driving MYACCESS towards 'Natural Technology.' He focuses on solving complex problems by reshaping technology to align with nature and human needs."
+    
   },
   { 
     name: "Naveen Gavara", 
     role: "Co-Founder", 
     company: "MYACCESS",
-    img: "/assets/aboutus/naveen img.jpg" 
+    img: "/assets/aboutus/naveen1.png" ,
+    pos: "center 22%",
+    bio: "Naveen leads the technical strategy, ensuring that every MYACCESS innovation is built with precision, scalability, and excellence to meet modern industrial demands." 
   }
 ];
 
@@ -440,6 +445,71 @@ export default function About() {
   .modal-card { flex-direction: column; padding: 30px; height: 90vh; overflow-y: auto; }
   .modal-img { width: 100%; height: 300px; }
 }
+  /* Premium Leadership Card */
+.leader-card {
+  width: 320px; /* Slightly wider for the bio */
+  text-align: center;
+  background: #fff;
+  padding-bottom: 20px;
+}
+
+.leader-img-box {
+  width: 100%;
+  aspect-ratio: 1 / 1.1;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  background: #f9f9f9;
+}
+
+.leader-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.leader-card:hover .leader-img-box img {
+  transform: scale(1.05); /* Soft zoom on hover */
+}
+
+.leader-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 5px;
+}
+
+.leader-role {
+  font-size: 14px;
+  color: #f4531c; /* Brand Orange */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Subtle Divider Line */
+.leader-divider {
+  width: 30px;
+  height: 2px;
+  background: #ddd;
+  margin: 15px auto;
+}
+
+.leader-bio {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #555;
+  padding: 0 15px;
+}
+  /* Add this to your <style> tag */
+.leadership-section-gap {
+  margin-bottom: 100px !important; /* Increase this number for more space */
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Space between Surya and Naveen */
+  flex-wrap: wrap;
+}
       `}</style>
 
       <Header />
@@ -551,20 +621,35 @@ export default function About() {
         </section>
 
         {/* Leadership Grid */}
-        <section className="sec-wrap">
-          <h2 className="section-header">Our Leadership</h2>
-          {/* Inside 'Our Leadership' Section */}
-<div className="person-grid">
-  {leaders.map((p, i) => (
-    <div key={i} className="person-card" style={{textAlign: 'center'}}> {/* Added center align here */}
-      <img src={p.img} alt={p.name} className="person-img" />
-      <div className="person-name">{p.name}</div>
-      <div className="person-role">{p.role}</div>
-      {/* REMOVED: person-company, person-bio, and lm-link */}
-    </div>
-  ))}
-</div>
+<section className="sec-wrap" style={{ marginBottom: '-40px' }}>
+  <h2 className="section-header">Our Leadership</h2>
+  
+  <div className="leadership-section-gap">
+    {leaders.map((p, i) => (
+      <div key={i} className="leader-card">
+        
+        {/* Image Box */}
+        <div className="leader-img-box">
+          <img 
+            src={p.img} 
+            alt={p.name} 
+            style={{ objectPosition: p.pos || 'center center' }} 
+          />
+        </div>
+        
+        {/* Content Box */}
+        <div className="leader-name">{p.name}</div>
+        <div className="leader-role">{p.role}</div>
+        
+        <div className="leader-divider"></div>
+        
+        <p className="leader-bio">{p.bio}</p>
+      </div>
+    ))}
+  </div>
+  </section>
 
+<section className="sec-wrap">
           <h2 className="section-header">Our Advisory Committee</h2>
         <div className="person-grid">
   {advisors.map((p, i) => (
