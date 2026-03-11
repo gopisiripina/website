@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLang } from "../context/LanguageContext";
 
 // --- Icons ---
 const ChevronDown = () => (
@@ -16,37 +17,24 @@ const CloseIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
 );
 
-const navItems = [
-  { 
-    label: "Products", 
-    subMenu: ["My Safe Shutter", "Form 4B", "Form 3+", "Form 3L", "Fuse 1+ 30W", "Compare Printers"] 
-  },
-  { 
-    label: "Services", 
-    subMenu: ["Standard Resins", "Engineering Resins", "Medical Resins", "SLS Powders"] 
-  },
-  { 
-    label: "Software", 
-    subMenu: ["PreForm", "Dashboard", "Fleet Control"] 
-  },
-  { 
-    label: "Applications", 
-    subMenu: ["Engineering", "Manufacturing", "Dental", "Jewelry"] 
-  },
-  { 
-    label: "Learn", 
-    subMenu: ["Resource Center", "Webinars", "Case Studies", "Events"] 
-  },
-  { label: "Support", subMenu: null },
-  { label: "Contact", subMenu: null }
-];
-
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState(null);
-  const [currentLang, setCurrentLang] = useState("EN");
+
+  // ✅ useLang from Context - currentLang state REMOVED, lang use chestunam
+  const { lang, setLang, t } = useLang();
+
+  const navItems = [
+    { label: t("nav_products"), subMenu: ["My Safe Shutter", "Form 4B", "Form 3+", "Form 3L", "Fuse 1+ 30W", "Compare Printers"] },
+    { label: t("nav_services"), subMenu: ["Standard Resins", "Engineering Resins", "Medical Resins", "SLS Powders"] },
+    { label: t("nav_software"), subMenu: ["PreForm", "Dashboard", "Fleet Control"] },
+    { label: t("nav_applications"), subMenu: ["Engineering", "Manufacturing", "Dental", "Jewelry"] },
+    { label: t("nav_learn"), subMenu: ["Resource Center", "Webinars", "Case Studies", "Events"] },
+    { label: t("nav_support"), subMenu: null },
+    { label: t("nav_contact"), subMenu: null },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -54,7 +42,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Closes mobile menu when window is resized to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1150) setMobileOpen(false);
@@ -70,30 +57,22 @@ export default function Header() {
           position: fixed; top: 0; left: 0; width: 100%; height: 64px;
           background: #fff; z-index: 1000; border-bottom: 1px solid #ececec;
           transition: all 0.3s ease; display: flex; align-items: center;
-          overflow: hidden; /* Prevents horizontal shift */
-          overflow: visible; 
+          overflow: visible;
         }
         .fl-header.scrolled { box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-
         .fl-header-inner {
           width: 100%; height: 100%; padding: 0 24px;
           display: flex; align-items: center; justify-content: space-between;
           position: relative;
         }
-
-        /* LEFT: Logo */
         .fl-header-left { display: flex; align-items: center; gap: 8px; flex-shrink: 0; cursor: pointer; }
         .logo-img { height: 22px; width: auto; object-fit: contain; }
         .logo-chevron { color: #888; display: flex; align-items: center; margin-left: 4px; }
-
-        /* MIDDLE: Nav (Desktop) */
         .fl-nav-center {
           position: absolute; left: 50%; transform: translateX(-50%);
           display: flex; align-items: center; gap: 2px;
         }
-        
         .nav-item-wrapper { position: relative; height: 64px; display: flex; align-items: center; }
-
         .fl-nav-btn {
           background: none; border: none; cursor: pointer; padding: 0 12px; height: 100%;
           font-family: inherit; font-size: 13.5px; font-weight: 500; color: #1a1a1a;
@@ -101,8 +80,6 @@ export default function Header() {
           transition: color 0.2s;
         }
         .fl-nav-btn:hover { color: #f4531c; }
-
-        /* DROP DOWN MENU (Desktop) */
         .fl-dropdown {
           position: absolute; top: 100%; left: 0; background: #fff;
           min-width: 180px; border: 1px solid #eee; border-radius: 0 0 8px 8px;
@@ -113,12 +90,10 @@ export default function Header() {
         .nav-item-wrapper:hover .fl-dropdown { visibility: visible; opacity: 1; transform: translateY(0); }
         .dropdown-link { display: block; padding: 10px 20px; font-size: 13px; color: #444; text-decoration: none; transition: 0.2s; }
         .dropdown-link:hover { background: #f9f9f9; color: #f4531c; }
-
-        /* RIGHT: Actions */
         .fl-header-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
         .lang-container { position: relative; }
-        .lang-btn { 
-          font-weight: 700; font-size: 11px; border: 1.5px solid #ddd; 
+        .lang-btn {
+          font-weight: 700; font-size: 11px; border: 1.5px solid #ddd;
           padding: 6px 12px; border-radius: 6px; cursor: pointer;
           display: flex; align-items: center; gap: 6px; background: white;
         }
@@ -129,39 +104,35 @@ export default function Header() {
         }
         .lang-opt { padding: 8px 15px; font-size: 12px; cursor: pointer; }
         .lang-opt:hover { background: #f5f5f5; }
-
-        .fl-cta-btn {
-          background: #f4531c; color: #fff; border: none; padding: 10px 16px;
-          font-weight: 700; font-size: 11px; border-radius: 4px; cursor: pointer;
-          text-transform: uppercase; letter-spacing: 0.5px;
-        }
-
+       /* BEFORE - replace this */
+/* AFTER */
+.fl-cta-btn {
+  background: #f4531c; color: #fff; border: none; padding: 10px 12px;
+  font-weight: 700; font-size: 10px; border-radius: 4px; cursor: pointer;
+  text-transform: uppercase; letter-spacing: 0.3px;
+  max-width: 160px; white-space: normal; line-height: 1.3; text-align: center;
+}
         .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 5px; margin-left: 5px; color: #1a1a1a; }
-
-        /* MOBILE DRAWER - Accordion Logic */
         .mobile-drawer {
-          position: fixed; top: 64px; left: 0; width: 100%; 
+          position: fixed; top: 64px; left: 0; width: 100%;
           height: ${mobileOpen ? 'calc(100vh - 64px)' : '0'};
           background: white; z-index: 999; overflow-y: auto; transition: height 0.3s ease-in-out;
           border-top: ${mobileOpen ? '1px solid #eee' : 'none'};
         }
         .m-item { border-bottom: 1px solid #f5f5f5; }
-        .m-trigger { 
-          width: 100%; padding: 20px; display: flex; justify-content: space-between; 
+        .m-trigger {
+          width: 100%; padding: 20px; display: flex; justify-content: space-between;
           font-weight: 600; font-size: 15px; cursor: pointer; background: none; border: none;
         }
         .m-sub { background: #fcfcfc; padding-left: 15px; overflow: hidden; }
         .m-sub-link { display: block; padding: 14px 25px; font-size: 14px; color: #666; text-decoration: none; }
-
-        /* --- RESPONSIVE BREAKPOINT --- */
-        @media (max-width: 1150px) {
-          .fl-nav-center, .fl-cta-btn { display: none; }
+       /* AFTER - breakpoint penchali 1300px ki */
+@media (max-width: 1300px) {
+  .fl-nav-center, .fl-cta-btn { display: none; }
           .hamburger { display: block; }
           .fl-header-inner { padding: 0 20px; }
-          .logo-img { height: 20px; } /* Slightly smaller logo for mobile space */
+          .logo-img { height: 20px; }
         }
-
-        /* Interaction Fixes */
         button:focus, button:active, .fl-nav-btn:focus, .lang-btn:focus {
           outline: none !important; box-shadow: none !important; -webkit-tap-highlight-color: transparent;
         }
@@ -170,12 +141,12 @@ export default function Header() {
 
       <header className={`fl-header ${isScrolled ? "scrolled" : ""}`}>
         <div className="fl-header-inner">
-          
-          {/* Logo Section */}
+
+          {/* Logo */}
           <Link to="/" className="fl-header-left" style={{ textDecoration: 'none' }}>
-    <img src="/assets/MYACCESS DOT.svg" alt="MYACCESS" className="logo-img" />
-    <div className="logo-chevron"><ChevronDown /></div>
-</Link>
+            <img src="/assets/MYACCESS DOT.svg" alt="MYACCESS" className="logo-img" />
+            <div className="logo-chevron"><ChevronDown /></div>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="fl-nav-center">
@@ -186,30 +157,13 @@ export default function Header() {
                 </button>
                 {item.subMenu && (
                   <div className="fl-dropdown">
-                   {/* Inside the fl-dropdown div in your header.jsx */}
-{item.subMenu.map(sub => {
-  // 1. Check if the label is "My Safe Shutter"
-  if (sub === "My Safe Shutter") {
-    return (
-      <a 
-        key={sub} 
-        href="https://mysafeshutter.in/" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="dropdown-link"
-      >
-        {sub}
-      </a>
-    );
-  }
-  
-  // 2. Otherwise, render the normal internal link
-  return (
-    <a key={sub} href="#" className="dropdown-link">
-      {sub}
-    </a>
-  );
-})}
+                    {item.subMenu.map(sub =>
+                      sub === "My Safe Shutter" ? (
+                        <a key={sub} href="https://mysafeshutter.in/" target="_blank" rel="noopener noreferrer" className="dropdown-link">{sub}</a>
+                      ) : (
+                        <a key={sub} href="#" className="dropdown-link">{sub}</a>
+                      )
+                    )}
                   </div>
                 )}
               </div>
@@ -219,62 +173,63 @@ export default function Header() {
           {/* Right Section */}
           <div className="fl-header-right">
             <div className="lang-container">
+              {/* ✅ lang (from context) use chestunam, currentLang కాదు */}
               <button className="lang-btn" onClick={() => setLangOpen(!langOpen)}>
-                {currentLang} <ChevronDown />
+                {lang} <ChevronDown />
               </button>
               <div className="lang-list">
-                {["English", "Hindi", "Tamil"].map(l => (
-                  <div key={l} className="lang-opt" onClick={() => {setCurrentLang(l.substring(0,2).toUpperCase()); setLangOpen(false)}}>
-                    {l}
+                {[
+                  { label: "English", code: "EN" },
+                  { label: "Hindi",   code: "HI" },
+                  { label: "Tamil",   code: "TA" },
+                ].map(l => (
+                  <div key={l.code} className="lang-opt" onClick={() => { setLang(l.code); setLangOpen(false); }}>
+                    {l.label}
                   </div>
                 ))}
               </div>
             </div>
-           
-            <button className="fl-cta-btn">Find a Reseller</button>
-            <button className="hamburger" onClick={() => {setMobileOpen(!mobileOpen); setActiveSubMenu(null);}}>
+
+            <button className="fl-cta-btn">{t("find_reseller")}</button>
+            <button className="hamburger" onClick={() => { setMobileOpen(!mobileOpen); setActiveSubMenu(null); }}>
               {mobileOpen ? <CloseIcon /> : <MenuIcon />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Drawer (Accordion) */}
+      {/* Mobile Drawer */}
       <div className="mobile-drawer">
         {navItems.map((item) => (
           <div key={item.label} className="m-item">
-            <button 
-              className="m-trigger" 
+            <button
+              className="m-trigger"
               onClick={() => item.subMenu && setActiveSubMenu(activeSubMenu === item.label ? null : item.label)}
             >
-              {item.label} 
+              {item.label}
               {item.subMenu && (
-                <span style={{transform: activeSubMenu === item.label ? 'rotate(180deg)' : 'rotate(0deg)', transition: '0.2s', display: 'flex'}}>
+                <span style={{ transform: activeSubMenu === item.label ? 'rotate(180deg)' : 'rotate(0deg)', transition: '0.2s', display: 'flex' }}>
                   <ChevronDown />
                 </span>
               )}
             </button>
-            
             {item.subMenu && activeSubMenu === item.label && (
               <div className="m-sub">
-                {/* Inside the mobile-drawer mapping */}
-{item.subMenu.map(sub => (
-  sub === "My Safe Shutter" ? (
-    <a key={sub} href="https://mysafeshutter.in/" target="_blank" className="m-sub-link">
-      {sub}
-    </a>
-  ) : (
-    <a key={sub} href="#" className="m-sub-link">
-      {sub}
-    </a>
-  )
-))}
+                {item.subMenu.map(sub =>
+                  sub === "My Safe Shutter" ? (
+                    <a key={sub} href="https://mysafeshutter.in/" target="_blank" rel="noopener noreferrer" className="m-sub-link">{sub}</a>
+                  ) : (
+                    <a key={sub} href="#" className="m-sub-link">{sub}</a>
+                  )
+                )}
               </div>
             )}
           </div>
         ))}
-        <div style={{padding: '30px 20px'}}>
-          <button className="fl-cta-btn" style={{width:'100%', height:'54px', fontSize:'13px'}}>Find a Reseller</button>
+        <div style={{ padding: '30px 20px' }}>
+          <button className="fl-cta-btn" style={{ width: '100%', height: '54px', fontSize: '13px' }}>
+            {t("find_reseller")}
+          </button>
         </div>
       </div>
     </>
