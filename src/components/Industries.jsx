@@ -4,16 +4,23 @@ import Footer from "./Footer";
 import { useLang } from "../context/LanguageContext";
 
 const industries = [
-  { nameKey: "ind_engineering",    img: "/assets/industry/engineer_3dprinter_4k.png" },
-  { nameKey: "ind_manufacturing",  img: "/assets/industry/robotic_3dprinting_4k.png" },
-  { nameKey: "ind_automotive",     img: "/assets/industry/car_factory_4k.png" },
-  { nameKey: "ind_aerospace",      img: "/assets/industry/aircraft_wind_tunnel_4k.png" },
-  { nameKey: "ind_dental",         img: "/assets/industry/dental_model_4k.png" },
-  { nameKey: "ind_medical",        img: "/assets/industry/medical_team_4k.png" },
-  { nameKey: "ind_education",      img: "/assets/industry/engineers_demo_4k.png" },
-  { nameKey: "ind_entertainment",  img: "/assets/industry/statue_model_4k.png" },
-  { nameKey: "ind_jewelry",        img: "/assets/industry/product_1_4k.png" },
-  { nameKey: "ind_audio",          img: "/assets/industry/product_2_4k.png" },
+  { nameKey: "ind_solder_rework",    img: "/assets/industry/solaring.png" },
+  { nameKey: "ind_pcb_design",  img: "/assets/industry/ecad.jpg.jpeg" },
+  { nameKey: "ind_embedded_development",     img: "/assets/industry/car_factory_4k.png" },
+  { nameKey: "ind_test_debug",      img: "/assets/industry/aircraft_wind_tunnel_4k.png" },
+  { nameKey: "ind_compliance_checklist",         img: "/assets/industry/dental_model_4k.png" },
+  { nameKey: "ind_mechanical_cad",        img: "/assets/industry/mcad.jpg" },
+  { nameKey: "ind_opencpu_firm",      img: "/assets/industry/engineers_demo_4k.png" },
+  { nameKey: "ind_pcb_fabrication",  img: "/assets/industry/pcb fabrications.png" },
+  { nameKey: "ind_component_procurement",        img: "/assets/industry/product_1_4k.png" },
+  { nameKey: "ind_ems_assembly",          img: "/assets/industry/product_2_4k.png" },
+  { nameKey: "ind_3d",          img: "/assets/industry/product_2_4k.png" },
+  { nameKey: "ind_plastic",          img: "/assets/industry/product_2_4k.png" },
+  { nameKey: "ind_3d_mold",          img: "/assets/industry/product_2_4k.png" },
+  { nameKey: "ind_mob",          img: "/assets/industry/product_2_4k.png" },
+  { nameKey: "ind_cld_service",          img: "/assets/industry/product_2_4k.png" },
+  { nameKey: "ind_cicd",          img: "/assets/industry/product_2_4k.png" },
+  { nameKey: "ind_patent_filing",          img: "/assets/industry/product_2_4k.png" },
 ];
 
 export default function Industries() {
@@ -25,7 +32,7 @@ export default function Industries() {
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'DM Sans', sans-serif; background: #fff; overflow-x: hidden; }
-        .ind-main { padding-top: 100px; width: 100%; max-width: 100vw; display: flex; flex-direction: column; align-items: center; }
+        .ind-main { padding-top: 80px; width: 100%; max-width: 100vw; display: flex; flex-direction: column; align-items: center; }
         .ind-intro { text-align: center; max-width: 850px; padding: 60px 20px; }
         .ind-intro h1 { font-size: clamp(28px, 4vw, 42px); font-weight: 700; line-height: 1.2; margin-bottom: 25px; color: #1a1a1a; }
         .ind-intro p { font-size: 16px; line-height: 1.6; color: #444; font-weight: 400; }
@@ -101,7 +108,7 @@ export default function Industries() {
             <button className="scale-btn btn-blue">{t("explore_printers")}</button>
             <button className="scale-btn btn-outline">{t("find_reseller")}</button>
           </div>
-          <img src="/assets/industry/product-lineup.png" alt="Products" className="product-hero-img" />
+          {/* <img src="/assets/industry/product-lineup.png" alt="Products" className="product-hero-img" /> */}
         </section>
       </main>
 

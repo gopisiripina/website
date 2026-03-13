@@ -6,12 +6,12 @@ const footerLinks = [
   { titleKey: "footer_3dprinters", links: ["Form 4", "Form 4B", "Form 4L", "Form 4BL", "Form Auto", "Fuse Series", "Resin 3D Printers", "Industrial 3D Printers", "Compare 3D Printers"] },
   { titleKey: "footer_postprocess", links: ["Wash + Cure", "Wash L + Cure L", "Fuse Sift + Fuse Blast", "Finishing Tools"] },
   { titleKey: "footer_materials", links: ["SLA Resins", "SLS Powders", "General Purpose", "Engineering", "Dental", "Medical", "Casting", "Form X", "Open Material Mode"] },
-  { titleKey: "footer_software", links: ["PreForm", "Dashboard", "Fleet Control"] },
+  { titleKey: "footer_software", links: ["PreForm", "Dashboard", "Fleet Control","Factory Solutions"] },
   { titleKey: "footer_industries", links: ["Engineering", "Manufacturing", "Automotive", "Aerospace", "Dental", "Medical", "Education", "Entertainment", "Jewelry", "Audio"] },
   { titleKey: "footer_learn", links: ["Applications", "Blog", "Resources", "Events", "ROI Calculator", "Forum"] },
   { titleKey: "footer_company", links: ["About", "Careers", "Press", "Press Coverage", "Community & Impact", "Contact"] },
   { titleKey: "footer_support", links: ["Support Resources", "Contact Support", "Accessibility"] },
-  { titleKey: "footer_sales", links: ["Find a Reseller"] },
+  { titleKey: "footer_sales", links: ["Contact Sales","Find a Reseller"] },
 ];
 
 export default function Footer() {
@@ -58,12 +58,11 @@ export default function Footer() {
           .email-input-wrap { max-width: 100%; }
           .footer-bottom { flex-direction: column; align-items: flex-start; gap: 20px; border-top: none; }
         }
-          .social-box img {
-  width: 18px; /* Adjust size based on how you want them to look */
+      .social-box img {
+  /* Change width to max-width to allow individual overrides */
+  max-width: 100%; 
   height: auto;
   display: block;
-  /* If your icons are black and you want them to stay black, no filter needed. 
-     If they are white and you want them to show on the white box, use filter: invert(1); */
 }
       `}</style>
 
@@ -79,26 +78,27 @@ export default function Footer() {
               <input type="email" placeholder={t("email_placeholder")} />
               <button>→</button>
             </div>
-         <div className="social-row">
+      <div className="social-row">
   <a href="https://facebook.com" className="social-box" target="_blank" rel="noreferrer">
-    <img src="/assets/footer/facebook@3x.png" alt="Facebook" />
+    {/* Increased size for Facebook */}
+    <img src="/assets/footer/facebook@3x.png" alt="Facebook" style={{ width: '30px' }} />
   </a>
   
   <a href="https://x.com" className="social-box" target="_blank" rel="noreferrer">
-    {/* Use the X logo image you provided here */}
-    <img src="/assets/footer/twitter@3x.png" alt="X" />
+    <img src="/assets/footer/twitter@3x.png" alt="X" style={{ width: '18px' }} />
   </a>
   
   <a href="https://instagram.com" className="social-box" target="_blank" rel="noreferrer">
-    <img src="/assets/footer/instagram@3x.png" alt="Instagram" />
+    {/* Increased size for Instagram */}
+    <img src="/assets/footer/instagram@3x.png" alt="Instagram" style={{ width: '23px' }} />
   </a>
   
   <a href="https://youtube.com" className="social-box" target="_blank" rel="noreferrer">
-    <img src="/assets/footer/youtube@3x.png" alt="YouTube" />
+    <img src="/assets/footer/youtube@3x.png" alt="YouTube" style={{ width: '25px' }} />
   </a>
   
   <a href="https://linkedin.com" className="social-box" target="_blank" rel="noreferrer">
-    <img src="/assets/footer/Linked in @3x.png" alt="LinkedIn" />
+    <img src="/assets/footer/Linked in @3x.png" alt="LinkedIn" style={{ width: '20px' }} />
   </a>
 </div>
           </div>
@@ -116,7 +116,16 @@ export default function Footer() {
                       <Link to="/about" style={{ color: '#888', textDecoration: 'none' }}>{link}</Link>
                     ) : link === "Contact" ? (
                       <Link to="/contact" style={{ color: '#888', textDecoration: 'none' }}>{link}</Link>
-                    ) : (
+                       ) : link === "Contact Sales" ? (
+                      <Link to="/sales" style={{ color: '#888', textDecoration: 'none' }}>{link}</Link>
+                    ) : 
+                     link === "Community & Impact" ? (
+                      <Link to="/community" style={{ color: '#888', textDecoration: 'none' }}>{link}</Link>
+                    ) : 
+                     link === "Careers" ? (
+                      <Link to="/careers" style={{ color: '#888', textDecoration: 'none' }}>{link}</Link>
+                    ) :
+                    (
                       <a href="#" style={{ color: '#888', textDecoration: 'none' }}>{link}</a>
                     )}
                   </li>

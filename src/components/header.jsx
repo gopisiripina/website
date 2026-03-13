@@ -23,12 +23,12 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState(null);
 
-  // ✅ useLang from Context - currentLang state REMOVED, lang use chestunam
+  // ✅ useLang from Context
   const { lang, setLang, t } = useLang();
 
   const navItems = [
-    { label: t("nav_products"), subMenu: ["My Safe Shutter", "Form 4B", "Form 3+", "Form 3L", "Fuse 1+ 30W", "Compare Printers"] },
-    { label: t("nav_services"), subMenu: ["Standard Resins", "Engineering Resins", "Medical Resins", "SLS Powders"] },
+    { label: t("nav_products"), subMenu: ["My Safe Shutter", "Kiosk", "Form 3+", "Form 3L", "Fuse 1+ 30W", "Compare Printers"] },
+    { label: t("nav_services"), subMenu: ["Embedded Development", "PCB Design", "Cloud Services", "All Services"] },
     { label: t("nav_software"), subMenu: ["PreForm", "Dashboard", "Fleet Control"] },
     { label: t("nav_applications"), subMenu: ["Engineering", "Manufacturing", "Dental", "Jewelry"] },
     { label: t("nav_learn"), subMenu: ["Resource Center", "Webinars", "Case Studies", "Events"] },
@@ -104,14 +104,13 @@ export default function Header() {
         }
         .lang-opt { padding: 8px 15px; font-size: 12px; cursor: pointer; }
         .lang-opt:hover { background: #f5f5f5; }
-       /* BEFORE - replace this */
-/* AFTER */
-.fl-cta-btn {
-  background: #f4531c; color: #fff; border: none; padding: 10px 12px;
-  font-weight: 700; font-size: 10px; border-radius: 4px; cursor: pointer;
-  text-transform: uppercase; letter-spacing: 0.3px;
-  max-width: 160px; white-space: normal; line-height: 1.3; text-align: center;
-}
+
+        .fl-cta-btn {
+          background: #f4531c; color: #fff; border: none; padding: 10px 12px;
+          font-weight: 700; font-size: 10px; border-radius: 4px; cursor: pointer;
+          text-transform: uppercase; letter-spacing: 0.3px;
+          max-width: 160px; white-space: normal; line-height: 1.3; text-align: center;
+        }
         .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 5px; margin-left: 5px; color: #1a1a1a; }
         .mobile-drawer {
           position: fixed; top: 64px; left: 0; width: 100%;
@@ -126,9 +125,9 @@ export default function Header() {
         }
         .m-sub { background: #fcfcfc; padding-left: 15px; overflow: hidden; }
         .m-sub-link { display: block; padding: 14px 25px; font-size: 14px; color: #666; text-decoration: none; }
-       /* AFTER - breakpoint penchali 1300px ki */
-@media (max-width: 1300px) {
-  .fl-nav-center, .fl-cta-btn { display: none; }
+
+        @media (max-width: 1300px) {
+          .fl-nav-center, .fl-cta-btn { display: none; }
           .hamburger { display: block; }
           .fl-header-inner { padding: 0 20px; }
           .logo-img { height: 20px; }
@@ -157,13 +156,15 @@ export default function Header() {
                 </button>
                 {item.subMenu && (
                   <div className="fl-dropdown">
-                    {item.subMenu.map(sub =>
-                      sub === "My Safe Shutter" ? (
-                        <a key={sub} href="https://mysafeshutter.in/" target="_blank" rel="noopener noreferrer" className="dropdown-link">{sub}</a>
-                      ) : (
-                        <a key={sub} href="#" className="dropdown-link">{sub}</a>
-                      )
-                    )}
+                    {item.subMenu.map(sub => {
+                      if (sub === "My Safe Shutter") {
+                        return <a key={sub} href="https://mysafeshutter.in/" target="_blank" rel="noopener noreferrer" className="dropdown-link">{sub}</a>
+                      } else if (sub === "All Services") {
+                        return <Link key={sub} to="/industries" className="dropdown-link">{sub}</Link>
+                      } else {
+                        return <a key={sub} href="#" className="dropdown-link">{sub}</a>
+                      }
+                    })}
                   </div>
                 )}
               </div>
@@ -173,13 +174,13 @@ export default function Header() {
           {/* Right Section */}
           <div className="fl-header-right">
             <div className="lang-container">
-              {/* ✅ lang (from context) use chestunam, currentLang కాదు */}
               <button className="lang-btn" onClick={() => setLangOpen(!langOpen)}>
                 {lang} <ChevronDown />
               </button>
               <div className="lang-list">
                 {[
                   { label: "English", code: "EN" },
+                   { label: "Telugu", code: "TE" },
                   { label: "Hindi",   code: "HI" },
                   { label: "Tamil",   code: "TA" },
                 ].map(l => (
@@ -215,13 +216,15 @@ export default function Header() {
             </button>
             {item.subMenu && activeSubMenu === item.label && (
               <div className="m-sub">
-                {item.subMenu.map(sub =>
-                  sub === "My Safe Shutter" ? (
-                    <a key={sub} href="https://mysafeshutter.in/" target="_blank" rel="noopener noreferrer" className="m-sub-link">{sub}</a>
-                  ) : (
-                    <a key={sub} href="#" className="m-sub-link">{sub}</a>
-                  )
-                )}
+                {item.subMenu.map(sub => {
+                  if (sub === "My Safe Shutter") {
+                    return <a key={sub} href="https://mysafeshutter.in/" target="_blank" rel="noopener noreferrer" className="m-sub-link">{sub}</a>
+                  } else if (sub === "All Services") {
+                    return <Link key={sub} to="/industries" className="m-sub-link" onClick={() => setMobileOpen(false)}>{sub}</Link>
+                  } else {
+                    return <a key={sub} href="#" className="m-sub-link">{sub}</a>
+                  }
+                })}
               </div>
             )}
           </div>

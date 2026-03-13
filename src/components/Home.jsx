@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./header";
 import Footer from "./Footer";
 import { Link } from 'react-router-dom';
@@ -6,37 +6,92 @@ import { useLang } from "../context/LanguageContext";
 
 // --- DATA (images/icons untayi, only names translated) ---
 const industryItems = [
-  { nameKey: "ind_ems",         icon: "/assets/home/Asset 13@3x.png", link: "/EMS" },
-  { nameKey: "ind_robotics",    icon: "/assets/home/Asset 18@3x.png", link: "/Robotics" },
-  { nameKey: "ind_3dprint",     icon: "/assets/home/Asset 17@3x.png", link: "/3D Print Farm" },
-  { nameKey: "ind_ai",          icon: "/assets/home/Asset 14@3x.png", link: "/Artificial Intelligence" },
-  { nameKey: "ind_m2m",         icon: "/assets/home/Asset 11@3x.png", link: "/Machine to Machine" },
-  { nameKey: "ind_proddev",     icon: "/assets/home/Asset 12@3x.png", link: "/Product Development" },
+  { nameKey: "ind_ems",         icon: "/assets/home/Pick And Place@3x.png", link: "#",customWidth: '65%' },
+  { nameKey: "ind_robotics",    icon: "/assets/home/Asset 18@3x.png",link: "#", },
+  { nameKey: "ind_3dprint",     icon: "/assets/home/3d print_1@3x.png", link: "#",customWidth: '80%' },
+  { nameKey: "ind_ai",          icon: "/assets/home/Asset 14@3x.png", link: "#" },
+  { nameKey: "ind_m2m",         icon: "/assets/home/Asset 11@3x.png", link: "#" },
+  { nameKey: "ind_proddev",     icon: "/assets/home/product@3x.png", link: "#",customWidth: '85%' },
   { nameKey: "ind_allservices", icon: "/assets/home/Asset 15@3x.png", link: "/industries" },
 ];
 
 const serviceTags = [
-  { name: "Soldering & Rework",        icon: "/assets/home/SOLDERING@3x.png" },
-  { name: "PCB Design",                icon: "/assets/home/PCB DESIGN@3x.png" },
-  { name: "Embedded Development",      icon: "/assets/home/icon3.png" },
-  { name: "OpenCPU",                   icon: "/assets/home/icon4.png" },
-  { name: "PCB Fabrication",           icon: "/assets/home/icon5.png" },
-  { name: "Component Procurement",     icon: "/assets/home/PROCUREMENT@3x.png" },
-  { name: "EMS Assembly",              icon: "/assets/home/icon7.png" },
-  { name: "Testing & Debugging",       icon: "/assets/home/debug@3x.png" },
-  { name: "ESD Compliance Checklist",  icon: "/assets/home/Asset 17.svg" },
-  { name: "Mechanical CAD",            icon: "/assets/home/icon8.png" },
-  { name: "3D Printing",               icon: "/assets/home/3d print.svg" },
-  { name: "Plastic Injection Molding", icon: "/assets/home/icon8.png" },
-  { name: "3D Printed Mold",           icon: "/assets/home/icon8.png" },
-  { name: "Fullstack Development",     icon: "/assets/home/Asset 12.svg" },
-  { name: "Cloud Services",            icon: "/assets/home/cloud.svg" },
-  { name: "CI/CD & DevOps",            icon: "/assets/home/devops.svg" },
-  { name: "Patent Filing Support",     icon: "/assets/home/icon8.png" },
+  { name: "Soldering & Rework",        icon: "/assets/home/SOLDERING@3x.png",media: "/assets/home/hero.mp4",type: "video" },
+  { name: "PCB Design",                icon: "/assets/home/pcb design@3x.png",media: "/assets/home/pcb_image.jpg",type: "photo"   },
+  { name: "Embedded Development",      icon: "/assets/home/icon3.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "OpenCPU",                   icon: "/assets/home/icon4.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "PCB Fabrication",           icon: "/assets/home/fabrication@3x.png",media: "/assets/home/pcb fabrications.png",type: "photo"  },
+  { name: "Component Procurement",     icon: "/assets/home/PROCUREMENT@3x.png" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
+  { name: "EMS Assembly",              icon: "/assets/home/ems@3x.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "Testing & Debugging",       icon: "/assets/home/debug@3x.png" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
+  { name: "ESD Compliance Checklist",  icon: "/assets/home/Asset 17.svg",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "Mechanical CAD",            icon: "/assets/home/mcad@3x.png" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
+  { name: "3D Printing",               icon: "/assets/home/3d print.svg",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "Plastic Injection Molding", icon: "/assets/home/icon8.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "3D Printed Mold",           icon: "/assets/home/icon8.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "Fullstack Development",     icon: "/assets/home/fullstack@3x.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "Cloud Services",            icon: "/assets/home/cloud.svg" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
+  { name: "CI/CD & DevOps",            icon: "/assets/home/devops.svg",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "Patent Filing Support",     icon: "/assets/home/patent@3x.png",media: "/assets/home/pcb_image.jpg",type: "photo" },
+];
+const makeAnythingData = [
+  {
+    // Index 0: Products
+    hero: { titleKey: "home_rapid_title", descKey: "home_rapid_desc", linkKey: "home_watch_webinar", image: "/assets/home/bamboo lab1.jpeg" },
+    grid: [
+      { titleKey: "home_concept",    img: "/assets/home/img1.jpeg" },
+      { titleKey: "home_looks",      img: "/assets/home/img2.jpeg" },
+      { titleKey: "home_functional", img: "/assets/home/img3.jpeg" },
+      { titleKey: "home_validation", img: "/assets/home/img4.jpeg" },
+    ]
+  },
+  {
+    // Index 1: Auxiliary Products
+    hero: { titleKey: "aux_hero_title", descKey: "aux_hero_desc", linkKey: "aux_link", image: "/assets/home/aux_hero.jpg" },
+    grid: [
+      { titleKey: "aux_item1", img: "/assets/home/aux1.jpg" },
+      { titleKey: "aux_item2", img: "/assets/home/aux2.jpg" },
+      { titleKey: "aux_item3", img: "/assets/home/aux3.jpg" },
+      { titleKey: "aux_item4", img: "/assets/home/aux4.jpg" },
+    ]
+  },
+  {
+    // Index 2: Giveaway Products
+    hero: { titleKey: "giveaway_hero_title", descKey: "giveaway_hero_desc", linkKey: "giveaway_link", image: "/assets/home/giveaway_hero.jpg" },
+    grid: [
+      { titleKey: "giveaway_item1", img: "/assets/home/give1.jpg" },
+      { titleKey: "giveaway_item2", img: "/assets/home/give2.jpg" },
+      { titleKey: "giveaway_item3", img: "/assets/home/give3.jpg" },
+      { titleKey: "giveaway_item4", img: "/assets/home/give4.jpg" },
+    ]
+  },
+  {
+    // Index 3: Laboratory And Farms
+    hero: { titleKey: "lab_hero_title", descKey: "lab_hero_desc", linkKey: "lab_link", image: "/assets/home/lab_hero.jpg" },
+    grid: [
+      { titleKey: "lab_item1", img: "/assets/home/lab1.jpg" },
+      { titleKey: "lab_item2", img: "/assets/home/lab2.jpg" },
+      { titleKey: "lab_item3", img: "/assets/home/lab3.jpg" },
+      { titleKey: "lab_item4", img: "/assets/home/lab4.jpg" },
+    ]
+  },
+  {
+    // Index 4: Skill Enhancement
+    hero: { titleKey: "skill_hero_title", descKey: "skill_hero_desc", linkKey: "skill_link", image: "/assets/home/skill_hero.jpg" },
+    grid: [
+      { titleKey: "skill_item1", img: "/assets/home/skill1.jpg" },
+      { titleKey: "skill_item2", img: "/assets/home/skill2.jpg" },
+      { titleKey: "skill_item3", img: "/assets/home/skill3.jpg" },
+      { titleKey: "skill_item4", img: "/assets/home/skill4.jpg" },
+    ]
+  }
 ];
 
 export default function Home() {
   const { t } = useLang();
+  const [activeService, setActiveService] = useState(serviceTags[0]);
+  const [activeTabIndex, setActiveTabIndex] = useState(0); 
+  
 
   const featureNews = {
     category: t("home_feature_cat"),
@@ -186,7 +241,16 @@ export default function Home() {
             <Link key={index} to={item.link} className="industry-card">
               <span>{t(item.nameKey)}</span>
               <div className="icon-container">
-                <img src={item.icon} alt={t(item.nameKey)} className="industry-icon" />
+               <img 
+  src={item.icon} 
+  alt={t(item.nameKey)} 
+  className="industry-icon" 
+  style={{ 
+    width: item.customWidth || '50%', 
+    opacity: item.customWidth ? 1 : 0.8 
+  }} 
+/>
+                
               </div>
             </Link>
           ))}
@@ -227,19 +291,23 @@ export default function Home() {
               <div className="materials-left">
                 <h2>{t("home_solve_title")} <span>{t("home_solve_sub")}</span></h2>
                 <div className="tag-cloud">
-                  {serviceTags.map((tag, index) => (
-                    <div key={index} className="m-tag">
-                      <img src={tag.icon} alt="" />
-                      {tag.name}
-                    </div>
-                  ))}
+                {serviceTags.map((tag, index) => (
+  <div key={index} className="m-tag" onClick={() => setActiveService(tag)}>
+    <img src={tag.icon} alt="" />
+    {tag.name}
+  </div>
+))}
                 </div>
                 <button className="h-btn btn-orange">{t("home_explore_services")} <span>&gt;</span></button>
               </div>
-              <div className="material-hero-card">
-                <video className="m-hero-img" autoPlay muted loop playsInline>
-                  <source src="/assets/home/hero.mp4" type="video/mp4" />
-                </video>
+             <div className="material-hero-card">
+  {activeService.type === "video" ? (
+    <video key={activeService.media} className="m-hero-img" autoPlay muted loop playsInline>
+      <source src={activeService.media} type="video/mp4" />
+    </video>
+  ) : (
+    <img src={activeService.media} className="m-hero-img" alt={activeService.name} />
+  )}
                 <div className="m-hero-footer">
                   <span style={{fontSize:'0.85rem',fontWeight:'700'}}>{t("home_biocompat")}</span>
                   <a href="#" style={{color:'#fff',fontWeight:'700',fontSize:'0.8rem',textDecoration:'none'}}>{t("learn_more_btn")} &gt;</a>
@@ -249,38 +317,44 @@ export default function Home() {
           </section>
 
           {/* Make Anything Section */}
-          <section className="apps-wrapper">
-            <h2 className="apps-title">{t("home_make_anything")} <span>{t("home_make_anything_sub")}</span></h2>
-            <div className="apps-tabs">
-              {[t("tab_products"), t("tab_auxiliary"), t("tab_giveaway"), t("tab_lab"), t("tab_skill")].map((nav, i) => (
-                <button key={i} className={`app-tab ${i === 0 ? 'active' : ''}`}>{nav}</button>
-              ))}
-            </div>
+       <section className="apps-wrapper">
+  <h2 className="apps-title">{t("home_make_anything")} <span>{t("home_make_anything_sub")}</span></h2>
+  
+  {/* Tabs Header */}
+  <div className="apps-tabs">
+    {[t("tab_products"), t("tab_auxiliary"), t("tab_giveaway"), t("tab_lab"), t("tab_skill")].map((nav, i) => (
+      <button 
+        key={i} 
+        className={`app-tab ${activeTabIndex === i ? 'active' : ''}`}
+        onClick={() => setActiveTabIndex(i)}
+      >
+        {nav}
+      </button>
+    ))}
+  </div>
             <div className="app-hero-card">
-              <img src="/assets/home/bamboo lab.jpg.jpeg" className="app-hero-img" alt="App Hero" />
-              <div className="app-hero-content">
-                <h3>{t("home_rapid_title")}</h3>
-                <p>{t("home_rapid_desc")}</p>
-                <div style={{display:'flex',gap:'2rem',alignItems:'center'}}>
-                  <button className="h-btn" style={{background:'#000',color:'#fff',padding:'12px 25px',fontSize:'11px'}}>{t("learn_more_btn")}</button>
-                  <a href="#" style={{fontWeight:'700',fontSize:'0.8rem',color:'#000',textDecoration:'none'}}>{t("home_watch_webinar")}</a>
-                </div>
-              </div>
-            </div>
-            <div className="app-grid">
-              {[
-                { titleKey: "home_concept",    img: "/assets/home/img1.jpeg" },
-                { titleKey: "home_looks",      img: "/assets/home/img2.jpeg" },
-                { titleKey: "home_functional", img: "/assets/home/img3.jpeg" },
-                { titleKey: "home_validation", img: "/assets/home/img4.jpeg" },
-              ].map((item, idx) => (
-                <a key={idx} href="#" className="app-small-card">
-                  <img src={item.img} className="app-small-img" alt={t(item.titleKey)} />
-                  <div className="card-footer">{t(item.titleKey)}</div>
-                </a>
-              ))}
-            </div>
-          </section>
+    <img src={makeAnythingData[activeTabIndex].hero.image} className="app-hero-img" alt="Hero" />
+    <div className="app-hero-content">
+      <h3>{t(makeAnythingData[activeTabIndex].hero.titleKey)}</h3>
+      <p>{t(makeAnythingData[activeTabIndex].hero.descKey)}</p>
+      <div style={{display:'flex',gap:'2rem',alignItems:'center'}}>
+        <button className="h-btn" style={{background:'#000',color:'#fff',padding:'12px 25px',fontSize:'11px'}}>{t("learn_more_btn")}</button>
+        <a href="#" style={{fontWeight:'700',fontSize:'0.8rem',color:'#000',textDecoration:'none'}}>
+          {t(makeAnythingData[activeTabIndex].hero.linkKey)}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div className="app-grid">
+    {makeAnythingData[activeTabIndex].grid.map((item, idx) => (
+      <a key={idx} href="#" className="app-small-card">
+        <img src={item.img} className="app-small-img" alt={t(item.titleKey)} />
+        <div className="card-footer">{t(item.titleKey)}</div>
+      </a>
+    ))}
+  </div>
+</section>
 
           {/* Get In Touch */}
           <section className="get-in-touch-banner">

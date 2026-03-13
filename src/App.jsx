@@ -4,7 +4,10 @@ import Home from './components/Home';
 import About from './components/About';
 import Industries from './components/Industries';
 import Contact from './components/Contact';
-import { LanguageProvider } from './context/LanguageContext'; // ADD THIS
+import { LanguageProvider } from './context/LanguageContext'; 
+import Sales from './components/Sales';
+import Community from './components/Community';
+import Careers from './components/Careers';
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/industries" element={<Industries />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/sales" element={<Sales />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/careers" element={<Careers />} />
           </Routes>
         </div>
       </Router>

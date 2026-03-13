@@ -23,7 +23,7 @@ const advisors = [
 ];
 
 const frontlineTeam = [
-  { name: "Malla Jaideep",           roleKey: "ft1_role",  bioKey: "ft1_bio",  img: "/assets/aboutus/jaideep.webp" },
+  { name: "Malla Jaideep",           roleKey: "ft1_role",  bioKey: "ft1_bio",  img: "/assets/aboutus/jaideep.webp",pos: "center 50%", moveX: "25px", scale: 1.5 },
   { name: "Vemuri Sai Krishna",      roleKey: "ft2_role",  bioKey: "ft2_bio",  img: "/assets/aboutus/sai.png" },
   { name: "Vemagiri Reshma",         roleKey: "ft3_role",  bioKey: "ft3_bio",  img: "/assets/aboutus/reshma1.jpeg", pos: "center 15%" },
   { name: "Jannela Chandana",        roleKey: "ft4_role",  bioKey: "ft4_bio",  img: "/assets/aboutus/chandana1.jpeg" },

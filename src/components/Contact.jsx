@@ -5,13 +5,13 @@ import Footer from "./Footer";
 const officeLocations = [
   {
     city: "Headquarters",
-    address: "MYACCESS Inc., 35 Business Way, Suite 101, Hyderabad, India",
-    mapLink: "https://maps.google.com"
+    address: "MYACCESS Inc., R6MP+R8J Shortcut cutting, Gurrampalem, Pendurthi-Anandapuram Rd, Visakhapatnam, Gurammapalem, Andhra Pradesh-531173 India",
+    mapLink: "https://maps.app.goo.gl/4UGQx3Ssgt6qGoSj6"
   },
   {
-    city: "Bangalore",
-    address: "MYACCESS Tech Hub, 22 Tech Park, Suite 201, Bangalore, KA, India",
-    mapLink: "https://maps.google.com"
+    city: "Andhra Pradesh",
+    address: "MYACCESS Tech Hub, North Campus, opp. Department of Marine Engineering, Andhra University North Campus, Andhra University, Visakhapatnam, Andhra Pradesh-530003 India",
+    mapLink: "https://www.google.com/maps/place/MeitY-Nasscom+CoE+-+IoT+%26+AI/data=!4m2!3m1!1s0x0:0xdf0e099a8ea307f?sa=X&ved=1t:2428&ictx=111"
   },
   {
     city: "Singapore",
