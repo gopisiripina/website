@@ -17,7 +17,7 @@ const industryItems = [
 
 const serviceTags = [
   { name: "Soldering & Rework",        icon: "/assets/home/SOLDERING@3x.png",media: "/assets/home/hero.mp4",type: "video" },
-  { name: "PCB Design",                icon: "/assets/home/pcb design@3x.png",media: "/assets/home/pcb_image.jpg",type: "photo"   },
+  { name: "PCB Design",                icon: "/assets/home/pcbdesign@3x.png",media: "/assets/home/pcb_image.jpg",type: "photo"   },
   { name: "Embedded Development",      icon: "/assets/home/icon3.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
   { name: "OpenCPU",                   icon: "/assets/home/icon4.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
   { name: "PCB Fabrication",           icon: "/assets/home/fabrication@3x.png",media: "/assets/home/pcb fabrications.png",type: "photo"  },
