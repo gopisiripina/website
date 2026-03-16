@@ -36,3 +36,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+html, body, #root {
+  overflow-x: clip !important;  /* horizontal overflow block cheyyi */
+  overflow-y: visible !important; /* vertical overflow allow cheyyi — sticky works */
+}

@@ -8,6 +8,7 @@ import { LanguageProvider } from './context/LanguageContext';
 import Sales from './components/Sales';
 import Community from './components/Community';
 import Careers from './components/Careers';
+import FactorySolutions from './components/FactorySolutions';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/sales" element={<Sales />} />
             <Route path="/community" element={<Community />} />
             <Route path="/careers" element={<Careers />} />
+            <Route path="/factory-solutions" element={<FactorySolutions />} />
           </Routes>
         </div>
       </Router>

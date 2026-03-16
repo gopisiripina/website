@@ -125,6 +125,9 @@ export default function Footer() {
                      link === "Careers" ? (
                       <Link to="/careers" style={{ color: '#888', textDecoration: 'none' }}>{link}</Link>
                     ) :
+                    link === "Factory Solutions" ? (
+                      <Link to="/factory-solutions" style={{ color: '#888', textDecoration: 'none' }}>{link}</Link>
+                    ) :
                     (
                       <a href="#" style={{ color: '#888', textDecoration: 'none' }}>{link}</a>
                     )}

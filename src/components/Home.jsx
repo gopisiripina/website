@@ -6,43 +6,43 @@ import { useLang } from "../context/LanguageContext";
 
 // --- DATA (images/icons untayi, only names translated) ---
 const industryItems = [
-  { nameKey: "ind_ems",         icon: "/assets/home/Pick And Place@3x.png", link: "#",customWidth: '65%' },
-  { nameKey: "ind_robotics",    icon: "/assets/home/Asset 18@3x.png",link: "#", },
-  { nameKey: "ind_3dprint",     icon: "/assets/home/3d print_1@3x.png", link: "#",customWidth: '80%' },
-  { nameKey: "ind_ai",          icon: "/assets/home/Asset 14@3x.png", link: "#" },
-  { nameKey: "ind_m2m",         icon: "/assets/home/Asset 11@3x.png", link: "#" },
-  { nameKey: "ind_proddev",     icon: "/assets/home/product@3x.png", link: "#",customWidth: '85%' },
-  { nameKey: "ind_allservices", icon: "/assets/home/Asset 15@3x.png", link: "/industries" },
+  { nameKey: "ind_ems",         icon: "/assets/home/Pick And Place@3x.webp", link: "#",customWidth: '65%' },
+  { nameKey: "ind_robotics",    icon: "/assets/home/Asset 18@3x.webp",link: "#", },
+  { nameKey: "ind_3dprint",     icon: "/assets/home/3d print_1@3x.webp", link: "#",customWidth: '80%' },
+  { nameKey: "ind_ai",          icon: "/assets/home/Asset 14@3x.webp", link: "#" },
+  { nameKey: "ind_m2m",         icon: "/assets/home/Asset 11@3x.webp", link: "#" },
+  { nameKey: "ind_proddev",     icon: "/assets/home/product@3x.webp", link: "#",customWidth: '85%' },
+  { nameKey: "ind_allservices", icon: "/assets/home/Asset 15@3x.webp", link: "/industries" },
 ];
 
 const serviceTags = [
-  { name: "Soldering & Rework",        icon: "/assets/home/SOLDERING@3x.png",media: "/assets/home/hero.mp4",type: "video" },
-  { name: "PCB Design",                icon: "/assets/home/pcbdesign@3x.png",media: "/assets/home/pcb_image.jpg",type: "photo"   },
+  { name: "Soldering & Rework",        icon: "/assets/home/SOLDERING@3x.webp",media: "/assets/home/hero.mp4",type: "video" },
+  { name: "PCB Design",                icon: "/assets/home/pcbdesign@3x.webp",media: "/assets/home/pcb_image.jpg",type: "photo"   },
   { name: "Embedded Development",      icon: "/assets/home/icon3.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
   { name: "OpenCPU",                   icon: "/assets/home/icon4.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
-  { name: "PCB Fabrication",           icon: "/assets/home/fabrication@3x.png",media: "/assets/home/pcb fabrications.png",type: "photo"  },
-  { name: "Component Procurement",     icon: "/assets/home/PROCUREMENT@3x.png" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
-  { name: "EMS Assembly",              icon: "/assets/home/ems@3x.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
-  { name: "Testing & Debugging",       icon: "/assets/home/debug@3x.png" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
+  { name: "PCB Fabrication",           icon: "/assets/home/fabrication@3x.webp",media: "/assets/home/pcb fabrications.webp",type: "photo"  },
+  { name: "Component Procurement",     icon: "/assets/home/PROCUREMENT@3x.webp" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
+  { name: "EMS Assembly",              icon: "/assets/home/ems@3x.webp",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "Testing & Debugging",       icon: "/assets/home/debug@3x.webp" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
   { name: "ESD Compliance Checklist",  icon: "/assets/home/Asset 17.svg",media: "/assets/home/pcb_image.jpg",type: "photo"  },
-  { name: "Mechanical CAD",            icon: "/assets/home/mcad@3x.png" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
-  { name: "3D Printing",               icon: "/assets/home/3d print.svg",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "Mechanical CAD",            icon: "/assets/home/mcad@3x.webp" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
+  { name: "3D Printing",               icon: "/assets/home/3d print.webp",media: "/assets/home/pcb_image.jpg",type: "photo"  },
   { name: "Plastic Injection Molding", icon: "/assets/home/icon8.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
   { name: "3D Printed Mold",           icon: "/assets/home/icon8.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
-  { name: "Fullstack Development",     icon: "/assets/home/fullstack@3x.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
-  { name: "Cloud Services",            icon: "/assets/home/cloud.svg" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
-  { name: "CI/CD & DevOps",            icon: "/assets/home/devops.svg",media: "/assets/home/pcb_image.jpg",type: "photo"  },
-  { name: "Patent Filing Support",     icon: "/assets/home/patent@3x.png",media: "/assets/home/pcb_image.jpg",type: "photo" },
+  { name: "Fullstack Development",     icon: "/assets/home/fullstack@3x.webp",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "Cloud Services",            icon: "/assets/home/cloud.webp" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
+  { name: "CI/CD & DevOps",            icon: "/assets/home/devops.webp",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "Patent Filing Support",     icon: "/assets/home/patent@3x.webp",media: "/assets/home/pcb_image.jpg",type: "photo" },
 ];
 const makeAnythingData = [
   {
     // Index 0: Products
-    hero: { titleKey: "home_rapid_title", descKey: "home_rapid_desc", linkKey: "home_watch_webinar", image: "/assets/home/bamboo lab1.jpeg" },
+    hero: { titleKey: "home_rapid_title", descKey: "home_rapid_desc", linkKey: "home_watch_webinar", image: "/assets/home/bamboo lab1.webp" },
     grid: [
-      { titleKey: "home_concept",    img: "/assets/home/img1.jpeg" },
-      { titleKey: "home_looks",      img: "/assets/home/img2.jpeg" },
-      { titleKey: "home_functional", img: "/assets/home/img3.jpeg" },
-      { titleKey: "home_validation", img: "/assets/home/img4.jpeg" },
+      { titleKey: "home_concept",    img: "/assets/home/img1.webp" },
+      { titleKey: "home_looks",      img: "/assets/home/img2.webp" },
+      { titleKey: "home_functional", img: "/assets/home/img3.webp" },
+      { titleKey: "home_validation", img: "/assets/home/img4.webp" },
     ]
   },
   {
@@ -97,13 +97,13 @@ export default function Home() {
     category: t("home_feature_cat"),
     title: t("home_feature_title"),
     desc: t("home_feature_desc"),
-    image: "/assets/home/mysafeshutter scene.png"
+    image: "/assets/home/mysafeshutter scene.webp"
   };
 
   const newsItems = [
-    { categoryKey: "home_news1_cat", titleKey: "home_news1_title", image: "/assets/home/bamboo lab1.jpeg" },
-    { categoryKey: "home_news2_cat", titleKey: "home_news2_title", image: "/assets/home/image_1_4k.png" },
-    { categoryKey: "home_news3_cat", titleKey: "home_news3_title", image: "/assets/home/ERP.jpg" },
+    { categoryKey: "home_news1_cat", titleKey: "home_news1_title", image: "/assets/home/bamboo lab1.webp" },
+    { categoryKey: "home_news2_cat", titleKey: "home_news2_title", image: "/assets/home/image_2_4k.webp" },
+    { categoryKey: "home_news3_cat", titleKey: "home_news3_title", image: "/assets/home/ERP.webp" },
   ];
 
   return (
@@ -209,7 +209,7 @@ export default function Home() {
           .app-grid { grid-template-columns: 1fr; }
           .app-hero-content h3 { font-size: 1.8rem; }
         }
-        .get-in-touch-banner { width: 100%; max-width: 1800px; height: 24rem; margin: 6rem auto 8rem auto; background: url('/assets/home/banner.png') center/cover no-repeat; border-radius: 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; position: relative; overflow: hidden; }
+        .get-in-touch-banner { width: 100%; max-width: 1800px; height: 24rem; margin: 6rem auto 8rem auto; background: url('/assets/home/banner.webp') center/cover no-repeat; border-radius: 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; position: relative; overflow: hidden; }
         .get-in-touch-banner::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); z-index: 1; }
         .get-in-touch-banner h2 { position: relative; z-index: 2; font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 800; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px; }
         .git-btn-black { position: relative; z-index: 2; background: #000; color: #fff; padding: 1rem 2.5rem; border-radius: 9px; font-weight: 700; border: none; font-size: 0.65rem; cursor: pointer; text-transform: uppercase; }

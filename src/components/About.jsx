@@ -23,11 +23,11 @@ const advisors = [
 ];
 
 const frontlineTeam = [
-  { name: "Malla Jaideep",           roleKey: "ft1_role",  bioKey: "ft1_bio",  img: "/assets/aboutus/jaideep.webp",pos: "center 50%", moveX: "25px", scale: 1.5 },
+  { name: "Malla Jaideep",           roleKey: "ft1_role",  bioKey: "ft1_bio",  img: "/assets/aboutus/jaideep.webp",pos: "center 50%", moveX: "21px",moveY: "29px",  scale: 1.7 },
   { name: "Vemuri Sai Krishna",      roleKey: "ft2_role",  bioKey: "ft2_bio",  img: "/assets/aboutus/sai.png" },
   { name: "Vemagiri Reshma",         roleKey: "ft3_role",  bioKey: "ft3_bio",  img: "/assets/aboutus/reshma1.jpeg", pos: "center 15%" },
   { name: "Jannela Chandana",        roleKey: "ft4_role",  bioKey: "ft4_bio",  img: "/assets/aboutus/chandana1.jpeg" },
-  { name: "Kalla Viharika",          roleKey: "ft5_role",  bioKey: "ft5_bio",  img: "/assets/aboutus/kalla.jpeg" },
+  { name: "Kalla Viharika",          roleKey: "ft5_role",  bioKey: "ft5_bio",  img: "/assets/aboutus/kalla.jpeg",pos: "center 50%", moveX: "2px",moveY: "-31px",  scale: 1.6 },
   { name: "Kandi Anusha",            roleKey: "ft6_role",  bioKey: "ft6_bio",  img: "/assets/aboutus/anusha.webp" },
   { name: "Gandepalli Uma Maheswari",roleKey: "ft7_role",  bioKey: "ft7_bio",  img: "/assets/aboutus/uma1.jpeg" },
   { name: "Shaik Naseer Ali",        roleKey: "ft8_role",  bioKey: "ft8_bio",  img: "/assets/aboutus/ali.jpeg", pos: "center 15%", moveX: "-10px", scale: 1.1 },
@@ -306,7 +306,7 @@ export default function About() {
             {frontlineTeam.map((m, i) => (
               <div key={i} className="frontline-card">
                 <div className="frontline-img-wrap">
-                  <img src={m.img} alt={m.name} style={{objectPosition: m.pos || 'center 15%', transform: `scale(${m.scale || 1}) translateX(${m.moveX || '0px'})`}} />
+                  <img src={m.img} alt={m.name} style={{objectPosition: m.pos || 'center 15%', transform: `scale(${m.scale || 1}) translateX(${m.moveX || '0px'}) translateY(${m.moveY || '0px'}) `}} />
                 </div>
                 <div className="frontline-info">
                   <h3>{m.name}</h3>
