@@ -5,33 +5,33 @@ import { useLang } from "../context/LanguageContext";
 
 // --- DATA (images same, only text keys) ---
 const strengthCards = [
-  { titleKey: "about_strength1_title", descKey: "about_strength1_desc", img: "/assets/aboutus/game.jpeg" },
-  { titleKey: "about_strength2_title", descKey: "about_strength2_desc", img: "/assets/aboutus/chess.jpeg" },
-  { titleKey: "about_strength3_title", descKey: "about_strength3_desc", img: "/assets/aboutus/target.jpeg" },
+  { titleKey: "about_strength1_title", descKey: "about_strength1_desc", img: "/assets/aboutus/game.webp" },
+  { titleKey: "about_strength2_title", descKey: "about_strength2_desc", img: "/assets/aboutus/chess.webp" },
+  { titleKey: "about_strength3_title", descKey: "about_strength3_desc", img: "/assets/aboutus/target.webp" },
 ];
 
 const leaders = [
-  { name: "Surya Tamarapalli", roleKey: "leader1_role", company: "MYACCESS", img: "/assets/aboutus/surya img.jpeg", pos: "center 85%", bioKey: "leader1_bio" },
-  { name: "Naveen Gavara",     roleKey: "leader2_role", company: "MYACCESS", img: "/assets/aboutus/naveen1.png",    pos: "center 22%", bioKey: "leader2_bio" },
+  { name: "Surya Tamarapalli", roleKey: "leader1_role", company: "MYACCESS", img: "/assets/aboutus/surya img.webp", pos: "center 85%", bioKey: "leader1_bio" },
+  { name: "Naveen Gavara",     roleKey: "leader2_role", company: "MYACCESS", img: "/assets/aboutus/naveen1.webp",    pos: "center 22%", bioKey: "leader2_bio" },
 ];
 
 const advisors = [
-  { name: "DR. N CHANDRA SHEKAR", roleKey: "advisor1_role", bioKey: "advisor1_bio", img: "/assets/aboutus/a1.png", detailedBioKey: "advisor1_detailed" },
-  { name: "DR. B. T. KRISHNA",    roleKey: "advisor2_role", bioKey: "advisor2_bio", img: "/assets/aboutus/a2.png", detailedBioKey: "advisor2_detailed" },
-  { name: "DR. K. M. CHISTI",     roleKey: "advisor3_role", bioKey: "advisor3_bio", img: "/assets/aboutus/a3.png", detailedBioKey: "advisor3_detailed" },
-  { name: "DR. J BHASKAR RAO",    roleKey: "advisor4_role", bioKey: "advisor4_bio", img: "/assets/aboutus/a4.png", detailedBioKey: "advisor4_detailed" },
+  { name: "DR. N CHANDRA SHEKAR", roleKey: "advisor1_role", bioKey: "advisor1_bio", img: "/assets/aboutus/a1.webp", detailedBioKey: "advisor1_detailed" },
+  { name: "DR. B. T. KRISHNA",    roleKey: "advisor2_role", bioKey: "advisor2_bio", img: "/assets/aboutus/a2.webp", detailedBioKey: "advisor2_detailed" },
+  { name: "DR. K. M. CHISTI",     roleKey: "advisor3_role", bioKey: "advisor3_bio", img: "/assets/aboutus/a3.webp", detailedBioKey: "advisor3_detailed" },
+  { name: "DR. J BHASKAR RAO",    roleKey: "advisor4_role", bioKey: "advisor4_bio", img: "/assets/aboutus/a4.webp", detailedBioKey: "advisor4_detailed" },
 ];
 
 const frontlineTeam = [
   { name: "Malla Jaideep",           roleKey: "ft1_role",  bioKey: "ft1_bio",  img: "/assets/aboutus/jaideep.webp",pos: "center 50%", moveX: "21px",moveY: "29px",  scale: 1.7 },
-  { name: "Vemuri Sai Krishna",      roleKey: "ft2_role",  bioKey: "ft2_bio",  img: "/assets/aboutus/sai.png" },
-  { name: "Vemagiri Reshma",         roleKey: "ft3_role",  bioKey: "ft3_bio",  img: "/assets/aboutus/reshma1.jpeg", pos: "center 15%" },
-  { name: "Jannela Chandana",        roleKey: "ft4_role",  bioKey: "ft4_bio",  img: "/assets/aboutus/chandana1.jpeg" },
-  { name: "Kalla Viharika",          roleKey: "ft5_role",  bioKey: "ft5_bio",  img: "/assets/aboutus/kalla.jpeg",pos: "center 50%", moveX: "2px",moveY: "-31px",  scale: 1.6 },
+  { name: "Vemuri Sai Krishna",      roleKey: "ft2_role",  bioKey: "ft2_bio",  img: "/assets/aboutus/sai.webp" },
+  { name: "Vemagiri Reshma",         roleKey: "ft3_role",  bioKey: "ft3_bio",  img: "/assets/aboutus/reshma1.webp", pos: "center 15%" },
+  { name: "Jannela Chandana",        roleKey: "ft4_role",  bioKey: "ft4_bio",  img: "/assets/aboutus/chandana1.webp" },
+  { name: "Kalla Viharika",          roleKey: "ft5_role",  bioKey: "ft5_bio",  img: "/assets/aboutus/kalla.webp",pos: "center 50%", moveX: "2px",moveY: "-31px",  scale: 1.6 },
   { name: "Kandi Anusha",            roleKey: "ft6_role",  bioKey: "ft6_bio",  img: "/assets/aboutus/anusha.webp" },
-  { name: "Gandepalli Uma Maheswari",roleKey: "ft7_role",  bioKey: "ft7_bio",  img: "/assets/aboutus/uma1.jpeg" },
-  { name: "Shaik Naseer Ali",        roleKey: "ft8_role",  bioKey: "ft8_bio",  img: "/assets/aboutus/ali.jpeg", pos: "center 15%", moveX: "-10px", scale: 1.1 },
-  { name: "Siripina Gopi",           roleKey: "ft9_role",  bioKey: "ft9_bio",  img: "/assets/aboutus/gopi.png", pos: "center 15%" },
+  { name: "Gandepalli Uma Maheswari",roleKey: "ft7_role",  bioKey: "ft7_bio",  img: "/assets/aboutus/uma1.webp" },
+  { name: "Shaik Naseer Ali",        roleKey: "ft8_role",  bioKey: "ft8_bio",  img: "/assets/aboutus/ali.webp", pos: "center 15%", moveX: "-10px", scale: 1.1 },
+  { name: "Siripina Gopi",           roleKey: "ft9_role",  bioKey: "ft9_bio",  img: "/assets/aboutus/gopi.webp", pos: "center 15%" },
 ];
 
 const CountUp = ({ end, duration = 2000 }) => {
@@ -198,7 +198,7 @@ export default function About() {
           </div>
           <div className="who-img-side">
             <div className="top-decor"></div>
-            <img src="/assets/aboutus/team1.jpg" className="who-photo" alt="Who We Are" />
+            <img src="/assets/aboutus/team1.webp" className="who-photo" alt="Who We Are" />
             <div className="blue-decor"></div>
           </div>
         </section>
@@ -228,9 +228,9 @@ export default function About() {
         {/* Awards */}
         <section className="sec-wrap" style={{textAlign:'center'}}>
           <div className="awards-row">
-            <img src="/assets/aboutus/award1.png" className="award-img" alt="Award" />
-            <img src="/assets/aboutus/award2.png" className="award-img" alt="Award" />
-            <img src="/assets/aboutus/award3.png" className="award-img" alt="Award" />
+            <img src="/assets/aboutus/award1.webp" className="award-img" alt="Award" />
+            <img src="/assets/aboutus/award2.webp" className="award-img" alt="Award" />
+            <img src="/assets/aboutus/award3.webp" className="award-img" alt="Award" />
           </div>
           <button className="outline-pill">{t("about_see_awards")}</button>
         </section>

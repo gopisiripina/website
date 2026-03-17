@@ -19,7 +19,8 @@ const serviceTags = [
   { name: "Soldering & Rework",        icon: "/assets/home/SOLDERING@3x.webp",media: "/assets/home/hero.mp4",type: "video" },
   { name: "PCB Design",                icon: "/assets/home/pcbdesign@3x.webp",media: "/assets/home/pcb_image.jpg",type: "photo"   },
   { name: "Embedded Development",      icon: "/assets/home/icon3.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
-  { name: "OpenCPU",                   icon: "/assets/home/icon4.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+  { name: "OpenCPU",                   icon: "/assets/home/cpu@3x.webp",media: "/assets/home/pcb_image.jpg",type: "photo"  },
+    { name: "OpenWrt",           icon: "/assets/home/wrt@3x.webp",media: "/assets/home/pcb_image.jpg",type: "photo"  },
   { name: "PCB Fabrication",           icon: "/assets/home/fabrication@3x.webp",media: "/assets/home/pcb fabrications.webp",type: "photo"  },
   { name: "Component Procurement",     icon: "/assets/home/PROCUREMENT@3x.webp" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
   { name: "EMS Assembly",              icon: "/assets/home/ems@3x.webp",media: "/assets/home/pcb_image.jpg",type: "photo"  },
@@ -28,7 +29,6 @@ const serviceTags = [
   { name: "Mechanical CAD",            icon: "/assets/home/mcad@3x.webp" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
   { name: "3D Printing",               icon: "/assets/home/3d print.webp",media: "/assets/home/pcb_image.jpg",type: "photo"  },
   { name: "Plastic Injection Molding", icon: "/assets/home/icon8.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
-  { name: "3D Printed Mold",           icon: "/assets/home/icon8.png",media: "/assets/home/pcb_image.jpg",type: "photo"  },
   { name: "Fullstack Development",     icon: "/assets/home/fullstack@3x.webp",media: "/assets/home/pcb_image.jpg",type: "photo"  },
   { name: "Cloud Services",            icon: "/assets/home/cloud.webp" ,media: "/assets/home/pcb_image.jpg",type: "photo" },
   { name: "CI/CD & DevOps",            icon: "/assets/home/devops.webp",media: "/assets/home/pcb_image.jpg",type: "photo"  },
@@ -298,8 +298,11 @@ export default function Home() {
   </div>
 ))}
                 </div>
-                <button className="h-btn btn-orange">{t("home_explore_services")} <span>&gt;</span></button>
-              </div>
+<Link to="/industries" style={{ textDecoration: 'none' }}>
+  <button className="h-btn btn-orange">
+    {t("home_explore_services")} <span>&gt;</span>
+  </button>
+</Link>              </div>
              <div className="material-hero-card">
   {activeService.type === "video" ? (
     <video key={activeService.media} className="m-hero-img" autoPlay muted loop playsInline>
